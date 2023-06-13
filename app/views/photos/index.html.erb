@@ -1,1 +1,12 @@
-<h1>インデックスだよ</hi>
+<h1>photo_index</hi>
+
+<p><%= link_to "新規投稿",new_photo_path %></p>
+
+<% @photos.each do |photo| %>
+    <p><%= image_tag photo.image.url %></p>
+    <p><%= photo.content %></p>
+    <%= link_to "詳細",photo_path(photo.id) %>
+    <%= link_to "編集",edit_photo_path(photo.id) %>
+    <%= link_to "削除",photo_path(photo.id), method: :delete%>
+<% end %>
+
