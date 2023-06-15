@@ -4,6 +4,19 @@
   background: linear-gradient(-225deg, #231557 0%, #44107a 29%, #ff1361 67%, #fff800 100%);
 }
 
+.text_color{
+  background-color: ghostwhite;
+  width: 60%;
+  min-height: 100vh;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50;
+}
+
+.image{
+  width: 200px;
+}
+
  *= require_tree .
  *= require_self
  */
