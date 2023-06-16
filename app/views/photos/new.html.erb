@@ -1,6 +1,6 @@
 <h1>Photos#new</h1>
 
-<%= form_with(model: @photo, local: true) do |form| %>
+<%= form_with(model: @photo, local: true ,url: confirm_photos_path) do |form| %>
     
   <div class="photo_content">
     <%= form.label :コメント %>

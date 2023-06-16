@@ -36,4 +36,5 @@ gem 'mini_magick'
 gem 'bcrypt'
 gem 'faker'
 gem 'rexml'
+gem 'dotenv-rails'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

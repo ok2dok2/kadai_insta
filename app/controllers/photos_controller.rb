@@ -18,6 +18,10 @@ class PhotosController < ApplicationController
     end
   end
 
+  def confirm
+    @photo = Photo.new(photo_params)
+  end
+
   def show
     @photo = Photo.find(params[:id])
     @favorite = current_user.favorites.find_by(photo_id: @photo.id)

@@ -2,9 +2,9 @@
 
 <p><%= link_to "新規投稿",new_photo_path %></p>
 
+<hr noshade="">
 <% @photos.each do |photo| %>
     <p>投稿者:<%= photo.user.name %></p>
-    
     <p><%= image_tag photo.image.url if photo.image.present? %></p>
     <p>コメント:<%= photo.content %></p>
     <%= link_to "詳細",photo_path(photo.id) %>
@@ -14,5 +14,7 @@
     <% else %>
       <p></p>
     <% end %>
+    <hr noshade="">
 <% end %>
+
 
