@@ -4,6 +4,11 @@
 <strong>Image:</strong>
 <%= image_tag @user.image.url %>
 
-<p><%= link_to 'プロフィールを編集する',edit_user_path %>
-  <%= link_to 'お気に入りを見る',favorites_user_path %>
-  <%= link_to 'トップへ',photos_path %></p>
+<% if @user == current_user %>
+  <p><%= link_to 'プロフィールを編集する',edit_user_path %></p>
+  <p><%= link_to 'お気に入りを見る',favorites_user_path %></p>
+<% else %>
+  <p></p>
+<% end %>
+
+<p><%= link_to 'トップへ',photos_path %></p>

@@ -4,6 +4,5 @@
 <% @favorites.each do |favorite| %>
     <p>投稿者:<%= favorite.user.name %></p>
     <p><%= image_tag favorite.photo.image.url if favorite.photo.image.present? %></p>
-    <p><%= favorite.photo.content %></p>
-    
+    <p><%= favorite.photo.content %></p> 
 <% end %>

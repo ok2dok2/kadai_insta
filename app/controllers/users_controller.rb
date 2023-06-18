@@ -1,42 +1,49 @@
 class UsersController < ApplicationController
-    def new
-        @user = User.new
-    end
+  def new
+    @user = User.new
+  end
 
-    def create
-      @user = User.new(user_params)
+  def create
+    @user = User.new(user_params)
       if  @user.save
         redirect_to user_path(@user.id)
       else
         render :new
       end
-    end
+  end
 
-    def show
-      @user = User.find(params[:id])
-    end
+  def show
+    @user = User.find(params[:id])
+  end
 
-    def favorites
-      @user = User.find(params[:id])
-      @favorites = current_user.favorites
-    end
+  def favorites
+    @user = User.find(params[:id])
+    @favorites = current_user.favorites
+  end
 
-    def edit
-      @user = User.find(params[:id])
+  def edit
+    @user = User.find(params[:id])
+    unless @user == current_user
+      redirect_to user_path
     end
+  end
 
-    def update
-      @user = User.find(params[:id])
+  def update
+    @user = User.find(params[:id])
+    if @user != current_user
+      redirect_to user_path
+    else
       if @user.update(user_params)
         redirect_to user_path notice:"更新しました"
       else
         redirect_to user_path notice:"更新できませんでした"
       end
     end
+  end
 
-    private
+  private
     
-    def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :image)
-    end
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :image)
+  end
 end
