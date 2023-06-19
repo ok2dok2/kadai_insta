@@ -1,5 +1,6 @@
 class PhotosController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user
+
   
   def index
     @photos =Photo.all
@@ -63,5 +64,11 @@ class PhotosController < ApplicationController
   
   def photo_params
     params.require(:photo).permit(:content, :image, :image_cache)
+  end
+
+  def authenticate_user
+    unless log_in?
+      redirect_to new_session_path
+    end
   end
 end

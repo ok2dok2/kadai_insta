@@ -1,20 +1,21 @@
-<h1>投稿一覧</h1>
 
-<p><%= link_to "新規投稿",new_photo_path %></p>
 
-<hr noshade="">
-<% @photos.each do |photo| %>
+
+  <h1>投稿一覧</h1>
+
+  <p><%= link_to "新規投稿",new_photo_path %></p>
+
+  <hr noshade="">
+  <% @photos.each do |photo| %>
     <p>投稿者:<%= photo.user.name %></p>
     <p><%= image_tag photo.image.url if photo.image.present? %></p>
     <p>コメント:<%= photo.content %></p>
-    <%= link_to "詳細",photo_path(photo.id) %>
-    <% if photo.user == current_user %>
-      <%= link_to "編集",edit_photo_path(photo.id) %>
-      <%= link_to "削除",photo_path(photo.id), method: :delete%>
-    <% else %>
-      <p></p>
+    <% if log_in? %>
+      <%= link_to "詳細",photo_path(photo.id) %>
+      <% if photo.user == current_user %>
+        <%= link_to "編集",edit_photo_path(photo.id) %>
+        <%= link_to "削除",photo_path(photo.id), method: :delete%>                                          
+      <% end %> 
+      <hr noshade="">
     <% end %>
-    <hr noshade="">
-<% end %>
-
-
+  <% end %>
